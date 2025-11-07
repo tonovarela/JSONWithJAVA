@@ -1,0 +1,14 @@
+[
+  {
+    "name": "John Doe",
+    "age": 30,
+    "active": true,
+    "hobbies": ["reading", "traveling", "swimming"]
+  },
+  {
+    "name": "Jane Smith",
+    "age": 25,
+    "active": false,
+    "hobbies": ["painting", "cycling"]
+  }
+]

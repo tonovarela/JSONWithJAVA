@@ -1,0 +1,9 @@
+{
+  "appName": "Varela",
+  "version": "1.0.0",
+  "settings": {
+    "theme": "Light",
+    "notifications": true,
+    "language": "en-MX"
+  }
+}
