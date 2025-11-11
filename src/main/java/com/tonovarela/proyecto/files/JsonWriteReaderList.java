@@ -1,6 +1,7 @@
 package com.tonovarela.proyecto.files;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.google.gson.reflect.TypeToken;
 import com.tonovarela.proyecto.nested.models.Person;
@@ -17,14 +18,16 @@ public class JsonWriteReaderList
 {
 
     static void main() {
-        Gson gson = new Gson();
 
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
         List<Person> people = new ArrayList<>();
-
         try (FileReader reader = new FileReader("person.json")) {
+            System.out.println("Reading JSON from file...");
             Type listType = new TypeToken<List<Person>>() {}.getType();
             people = gson.fromJson(reader, listType);
-        } catch (JsonIOException e) {
+        }
+
+        catch (JsonIOException e) {
             System.out.println("Error reading JSON from file: " + e.getMessage());
         } catch (IOException e) {
             System.out.println("File not found or error reading file: " + e.getMessage());
@@ -34,7 +37,10 @@ public class JsonWriteReaderList
         }
 
 
-        people.add(new Person("Ana", 30, false));
+
+        people.add(new Person("Melissa", 30, false));
+        people.add(new Person("Marco", 50, false));
+        people.add(new Person("Andrea", 40, false));
         try (FileWriter writer = new FileWriter("person.json")) {
             gson.toJson(people,writer);
             System.out.println("JSON file created successfully.");

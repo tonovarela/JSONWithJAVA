@@ -2,10 +2,19 @@ package com.tonovarela.proyecto.nested;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+
+
 import com.google.gson.reflect.TypeToken;
 import com.tonovarela.proyecto.nested.models.AppConfig;
-import com.tonovarela.proyecto.nested.models.Person;
+
 import com.tonovarela.proyecto.nested.models.PersonProyect;
+import org.everit.json.schema.Schema;
+import org.everit.json.schema.loader.SchemaLoader;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONTokener;
+
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -42,9 +51,22 @@ public class JsonReader {
     public static List<PersonProyect> loadPersons(String filePath){
          List<PersonProyect> persons = new ArrayList<>();
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        try (FileReader reader = new FileReader(filePath)) {
+        try (
+                FileReader reader = new FileReader(filePath);
+                FileReader schemaReader= new FileReader("person-schema.json")
+        ) {
+
+
             Type listType = new TypeToken<List<PersonProyect>>() {}.getType();
             persons = gson.fromJson(reader, listType);
+
+            JSONObject schemaObject= new JSONObject(new JSONTokener(schemaReader));
+            Schema schema= SchemaLoader.load(schemaObject);
+            JSONArray peopleArray = new JSONArray(new JSONTokener(reader));
+            schema.validate(peopleArray);
+
+
+
             return  persons;
         }catch (IOException e){
             System.out.println(e.getMessage());
@@ -52,15 +74,22 @@ public class JsonReader {
         return persons;
     }
 
-//    public static void savePersons(List<PersonProyect> persons, String filePath){
-//        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-//        try (FileWriter writer = new FileWriter(filePath)) {
-//            gson.toJson(persons, writer);
-//            System.out.println("Persons saved successfully to " + filePath);
-//        }catch (IOException e){
-//            System.out.println(e.getMessage());
-//        }
-//    }
+    public static void savePersons(List<PersonProyect> persons, String filePath){
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        try (FileWriter writer = new FileWriter(filePath)) {
+            gson.toJson(persons, writer);
+            System.out.println("Persons saved successfully to " + filePath);
+        }catch (IOException e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+
+
+
+
+
+
 
 
 

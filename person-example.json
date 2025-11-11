@@ -1,14 +1,82 @@
-[
+
   {
     "name": "John Doe",
     "age": 30,
     "active": true,
-    "hobbies": ["reading", "traveling", "swimming"]
+    "email": "jon@love.com",
+    "hobbies": [
+      "reading",
+      "traveling",
+      "swimming"
+    ]
   },
   {
     "name": "Jane Smith",
     "age": 25,
     "active": false,
-    "hobbies": ["painting", "cycling"]
+    "email": "jon@love.com",
+    "hobbies": [
+      "painting",
+      "cycling"
+    ]
+  },
+  {
+    "name": "Ana",
+    "age": 28,
+    "active": true,
+    "email": "jon@love.com",
+    "hobbies": [
+      "Painting",
+      "Traveling"
+    ]
+  },
+  {
+    "name": "Miroslava",
+    "age": 28,
+    "active": true,
+    "email": "jon@love.com",
+    "hobbies": [
+      "Painting",
+      "Traveling"
+    ]
+  },
+  {
+    "name": "Miroslava",
+    "age": 28,
+    "active": true,
+    "email": "dlove@love.com",
+    "hobbies": [
+      "Painting",
+      "Traveling"
+    ]
+  },
+  {
+    "name": "Miroslava",
+    "age": 28,
+    "active": true,
+    "email": "dlove@love.com",
+    "hobbies": [
+      "Painting",
+      "Traveling"
+    ]
+  },
+  {
+    "name": "Miroslava",
+    "age": 28,
+    "active": true,
+    "email": "dlove@love.com",
+    "hobbies": [
+      "Painting",
+      "Traveling"
+    ]
+  },
+  {
+    "name": "Miroslava",
+    "age": 28,
+    "active": true,
+    "email": "dlove@love.com",
+    "hobbies": [
+      "Painting",
+      "Traveling"
+    ]
   }
-]
